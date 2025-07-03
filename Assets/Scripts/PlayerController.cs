@@ -14,11 +14,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
-        Vector2 velocity = rb.velocity;
+        Vector2 velocity = rb.linearVelocity;
         velocity.x = moveX * moveSpeed;
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.velocity.y) < 0.01f)
+        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(rb.linearVelocity.y) < 0.01f)
         {
             rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
         }
