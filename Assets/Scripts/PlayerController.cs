@@ -19,11 +19,11 @@ public class PlayerController : MonoBehaviour
             moveX -= 1f;
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
             moveX += 1f;
-        Vector2 velocity = rb.velocity;
+        Vector2 velocity = rb.linearVelocity;
         velocity.x = moveX * moveSpeed;
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && Mathf.Abs(rb.velocity.y) < 0.01f)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && Mathf.Abs(rb.linearVelocity.y) < 0.01f)
         {
             rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
         }
