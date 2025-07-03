@@ -52,6 +52,15 @@ public class GameInitializer : MonoBehaviour
         groundObj.AddComponent<BoxCollider2D>();
         groundObj.GetComponent<BoxCollider2D>().sharedMaterial = new PhysicsMaterial2D { friction = 0.5f };
         groundObj.AddComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+        // Pixel simulation
+        var simObj = new GameObject("PixelSimulation");
+        var simulation = simObj.AddComponent<PixelSimulation>();
+        simObj.transform.position = new Vector3(0, 0, 0);
+
+        var editorObj = new GameObject("PixelEditor");
+        var editor = editorObj.AddComponent<PixelEditor>();
+        editor.simulation = simulation;
     }
 
     Sprite CreateSquareSprite(Color color)
